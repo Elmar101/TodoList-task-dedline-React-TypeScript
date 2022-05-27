@@ -8,13 +8,13 @@ const options: IINPUTTYPE[] = [
   { labelName: "email", value: "email" },
   { labelName: "teaxtarea", value: "teaxtarea" },
 ];
-
+const initialValue = { labelName: "", placeholder: "", type: "" }
 const TodoType = () => {
   const [state, setState] = useState<{
     labelName: string;
     placeholder: string;
     type: string;
-  }>({ labelName: "", placeholder: "", type: "" });
+  }>(initialValue);
 
   const [data, setData] = useState<
     { labelName: string; placeholder: string; type: string }[]
@@ -48,6 +48,7 @@ const TodoType = () => {
 
   const HandleAddToListClick = () => {
     setData([...data, state]);
+    setState(initialValue)
   };
 
   const removeList = (labelName: string) => {
